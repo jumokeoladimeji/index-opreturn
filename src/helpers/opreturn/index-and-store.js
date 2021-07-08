@@ -18,14 +18,13 @@ const insertAndStoreData = async () => {
     await parseMultipleBlocks(startingBlockHeight, endBlockHeight, bitcoindClient);
 
     sock.connect(zeromqTCP); 
-
     //listen for and sync newly mined blocks
     sock.on('message', async function(topic, message) {
       if (topic.toString() === 'hashblock') {
         const blockHash = message.toString('hex');
-
         const block = await bitcoindClient.getBlock(blockHash);
         const newMinedBlockHeight = block.height;
+
         await syncNewlyMinedBlocksData(newMinedBlockHeight, endBlockHeight, bitcoindClient);
       }
     });

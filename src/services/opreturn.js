@@ -7,7 +7,7 @@ const { op_return } = require('../models');
 const getOpReturn = async (opReturn) => {
     const opReturnData = await op_return.findOne({
         where: { op_return: opReturn },
-        attributes: [ 'blockhash', 'txhash' ],
+        attributes: [ 'blockhash', 'txhash' ]
     });
     return opReturnData;
 };
@@ -20,27 +20,22 @@ const createOpReturn = async (opReturnDetails) => {
         op_return: Buffer.from(opReturnDetails.opReturnData, 'hex').toString('utf8'),
         blockheight: opReturnDetails.blockheight
     }
-    const newOpReturn = await op_return.create(opReturnToCreate);
-    return newOpReturn.toJSON();
+    await op_return.create(opReturnToCreate);
 };
 
 /**
   * @description - Fetches a OpReturn
 */
 const getLastSavedBlockHeight = async () => {
-    const opReturnBlockheight = await op_return.findAll({
+    const response = await op_return.findAll({
         attributes: [ 'blockheight' ],
         limit: 1,
-        order: ['createdAt']
+        order: ['createdAt'],
+        raw: true
     });
-    if (!opReturnBlockheight) {
-        return {
-            error: 'opReturnBlockheight not found',
-            status: 404
-        }
+    if (response) {
+        return response[0].blockheight;
     }
-    // blockHeight = parseInt(blockHeight);
-    return opReturnBlockheight || opReturnBlockheight.toJSON();
 };
 
 module.exports = {

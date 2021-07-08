@@ -1,3 +1,4 @@
+const Sequelize = require('sequelize');
 const { createOpReturn } = require('../../services/opreturn');
 
 //store OP_RETURN data for a block
@@ -29,8 +30,19 @@ const getAndSaveOpReturnData = async (block, bitcoindClient) => {
             }   
         
         }    
-        catch (error) {
-            console.error('tehher=====', error);    
+        catch (err) {
+            let message;
+            if (err instanceof Sequelize.ValidationError) {
+                err.errors.forEach((error) => {
+                    switch (error.validatorKey) {
+                        case 'not_unique':
+                            message = `${error.path} ${error.value} is already saved in the db`;
+                    }
+                });
+                console.log('error:', message)
+            } else {
+                console.error(err)
+            }
         }
     }
 

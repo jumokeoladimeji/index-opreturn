@@ -9,7 +9,7 @@ const { getAndSaveOpReturnData } = require('./save-indexed-opreturn-data');
  */
 const parseMultipleBlocks = async (startHeight, endHeight, bitcoindClient) => {
     //loop through once if no startHeight is passed
-    for (let i = startHeight; i <= endHeight+1; i++ ) {
+    for (let i = startHeight; i <= endHeight; i++ ) {
         const blockHash = await bitcoindClient.getBlockHash(i);
         const block = await bitcoindClient.getBlock(blockHash);
         await getAndSaveOpReturnData(block, bitcoindClient);
