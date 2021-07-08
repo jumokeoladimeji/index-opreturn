@@ -1,5 +1,6 @@
 # bitcointest api
-* API 
+* This stores and indexes Bitcoin OP_RETURN data for all transactions after a certain block
+* It also has an HTTP endpoint For Returning Stored OP_RETURN Data Transaction Hashes and Block Hashes
 
 ## Tools Used
 | **Dependency** | **Use** |
@@ -11,8 +12,6 @@
 |Zeromq|An asynchronous messaging library that provides a message queue for subscribing to bitcoind to receive transactions and blocks
 |bitcoin-core| A modern Bitcoin Core REST and RPC client to execute administrative tasks, multiwallet operations and queries about network and the blockchain. |
 
-
-* Find Postman API here https://www.getpostman.com/collections/c75647837e9f25e6ba2a
 
 ### Set Up locally
 * git clone
@@ -50,7 +49,8 @@ CREATE DATABASE databasename;
 ### Populate the DB with meal and user data
 In your terminal cd to 
 
-```npx sequelize db:migrate
+```
+npx sequelize db:migrate
 ```
 
 OR
