@@ -8,8 +8,8 @@
 |Postgresql| An object-relational database management system (ORDBMS)|
 |Sequelize|A promise-based ORM for Node.js. It helps with data conversion|
 |Express| A flexible Node.js web application framework|
-|redis| For Caching|
-|Babel||
+|Zeromq|An asynchronous messaging library that provides a message queue for subscribing to bitcoind to receive transactions and blocks
+|bitcoin-core| A modern Bitcoin Core REST and RPC client to execute administrative tasks, multiwallet operations and queries about network and the blockchain. |
 
 
 * Find Postman API here https://www.getpostman.com/collections/c75647837e9f25e6ba2a
