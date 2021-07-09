@@ -9,7 +9,6 @@ export default (app) => {
     })
 
     app.use((err, req, res, next) => {
-        console.error('what is the error', err);
         res.status(500).json({error: 'an error occurred'});
     });
 }

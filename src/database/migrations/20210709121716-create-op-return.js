@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       op_return: {
-        type: Sequelize.BLOB
+        type: Sequelize.TEXT
       },
       txhash: {
         type: Sequelize.TEXT,

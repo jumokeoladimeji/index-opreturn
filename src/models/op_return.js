@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   op_return.init({
-    op_return: { type: DataTypes.BLOB },
+    op_return: { type: DataTypes.TEXT },
     txhash: { type: DataTypes.TEXT, unique: true },
     blockhash: DataTypes.TEXT,
     blockheight: DataTypes.INTEGER

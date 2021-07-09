@@ -39,11 +39,11 @@ psql postgres
 
 In the Postgres Shell run:
 ```
-CREATE DATABASE databasename;
+CREATE DATABASE bitcointest;
 ```
 
 ```
-\connect databasename;
+\connect bitcointest;
 ```
 
 ### Populate the DB with meal and user data
